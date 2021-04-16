@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toastify-React</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./dist/toastifier.min.css" />
     <script src="./script.js"></script>
   </head>
   <body>
@@ -63,11 +63,11 @@
     var butt = document.getElementById('butt');
     butt.style.textAlign = 'center';
     let options = {
-      type: 'success',
-      shadow: false,
-      animation: 'bounce',
-      duration: 3000,
-      position: 'top-right',
+      type: 'error',
+      // shadow: false,
+      // animation: 'bounce',
+      // duration: 3000,
+      // position: 'top-right',
       onhoverPause: true,
       onClickClose: true,
       showIcons:true,
@@ -77,6 +77,7 @@
         text: '',
         border: '',
       },
+
     };
     butt.addEventListener('click', () => {
       toast(options, 'Alert Check');
@@ -200,7 +201,7 @@
       -webkit-text-fill-color: transparent;
     }
     main .firstpagebutton {
-      cursor:pointer,
+      cursor:pointer;
       text-align: center;
       margin-bottom: 40px;
       display: flex;

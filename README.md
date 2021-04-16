@@ -28,7 +28,7 @@ function App() {
 
 ## Demo
 
-<img src="https://imgur.com/ThbikEk" alt="Image"/>
+<img src="https://imgur.com/ThbikEk.gif" alt="Image"/>
 
 ## Documentation
 

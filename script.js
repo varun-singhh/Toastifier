@@ -1,22 +1,33 @@
-const toast = {
-  success: (options, msg) => {
-    var h = document.createElement("div");
-    h.innerText = msg;
-    h.classList.add("alert");
-    if (options.type === "success") {
-      h.classList.add("success");
-    } else if (options.type === "warn") {
-      h.classList.add("warn");
-    } else if (options.type === "error") {
-      h.classList.add("error");
-    }
-    if (options.shadow) {
-      h.classList.add("shadow");
-    }
+const toast = (options, msg) => {
+if(typeof window)
+  {var container
+  var check = document.getElementById('listOfToasts')
+  if (check) {
+    container = check
+  }
+  else {
+    container = document.createElement("div");
+    container.classList.add("container");
+    container.id = "listOfToasts" 
+    document.body.append(container)
+  }
+  var h = document.createElement("div");
+  h.innerText = msg;
+  h.classList.add("alert");
+  if (options.type === "success") {
+    h.classList.add("success");
+  } else if (options.type === "warn") {
+    h.classList.add("warn");
+  } else if (options.type === "error") {
+    h.classList.add("error");
+  }
+  if (options.shadow) {
+    h.classList.add("shadow");
+  }
 
-    let styles, styleExit;
-    if (options.animation === "slide") {
-      styles = `
+  let styles, styleExit;
+  if (options.animation === "slide") {
+    styles = `
         0% {
             -webkit-transform: translateX(-1000px) scale(0.7);
             transform: translateX(-1000px) scale(0.7);
@@ -33,7 +44,7 @@ const toast = {
             opacity: 1;
           }
         `;
-      styleExit = `
+    styleExit = `
         0% {
             -webkit-transform: scale(1);
             transform: scale(1);
@@ -50,10 +61,10 @@ const toast = {
             opacity: 0.7;
           }
           `;
-    }
-    
-    if (options.animation === "fade") {
-      styles = `
+  }
+
+  if (options.animation === "fade") {
+    styles = `
         0% {
             opacity: 0;
         }
@@ -61,7 +72,7 @@ const toast = {
             opacity: 1;
         }
         `;
-      styleExit = `
+    styleExit = `
         0% {
             opacity: 1;
         }
@@ -69,10 +80,10 @@ const toast = {
             opacity: 0;
         }
           `;
-    }
-    
-    if (options.animation === "zoom") {
-      styles = `
+  }
+
+  if (options.animation === "zoom") {
+    styles = `
         0% {
             opacity: 0;
             -webkit-transform: scale3d(0.3, 0.3, 0.3);
@@ -82,7 +93,7 @@ const toast = {
             opacity: 1;
         }
         `;
-      styleExit = `
+    styleExit = `
       0% {
         opacity: 1;
       }
@@ -95,10 +106,10 @@ const toast = {
         opacity: 0;
       }
           `;
-    }
-    
-    if (options.animation === "flip") {
-      styles = `
+  }
+
+  if (options.animation === "flip") {
+    styles = `
       0% {
         -webkit-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
@@ -126,7 +137,7 @@ const toast = {
         transform: perspective(400px);
       }
         `;
-      styleExit = `
+    styleExit = `
       0% {
         -webkit-transform: perspective(400px);
         transform: perspective(400px);
@@ -142,10 +153,10 @@ const toast = {
         opacity: 0;
       }
           `;
-    }
-    
-    if (options.animation === "bounce") {
-      styles = `
+  }
+
+  if (options.animation === "bounce") {
+    styles = `
       %,
       20%,
       40%,
@@ -183,7 +194,7 @@ const toast = {
         transform: scaleX(1);
       }
         `;
-      styleExit = `
+    styleExit = `
       20% {
         -webkit-transform: scale3d(0.9, 0.9, 0.9);
         transform: scale3d(0.9, 0.9, 0.9);
@@ -200,34 +211,33 @@ const toast = {
         transform: scale3d(0.3, 0.3, 0.3);
       }
           `;
-    }
+  }
 
-    let styleSheet = null;
-    // Creating a style element
-    // To add the keyframes
-    if (!styleSheet) {
-      styleSheet = document.createElement("style");
-      styleSheet.type = "text/css";
-      document.head.appendChild(styleSheet);
+  let styleSheet = null;
+  // Creating a style element
+  // To add the keyframes
+  if (!styleSheet) {
+    styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    document.head.appendChild(styleSheet);
 
-      styleSheet.sheet.insertRule(
-        `@keyframes animated_entrance {${styles}}`,
-        styleSheet.length
-      );
-      styleSheet.sheet.insertRule(
-        `@keyframes animated_exit {${styleExit}}`,
-        styleSheet.length
-      );
-        }
-    const animation_time = ((options.duration / 2) - 500)/1000
-    h.style.animation = `animated_entrance ${animation_time}s`;
-    setTimeout(() => {
-        h.style.animation = `animated_exit ${animation_time}s`;
-    }, options.duration)
-    setTimeout(() => {
-        h.style.display = 'none'
-    }, (options.duration+(1000*animation_time)))
-    document.body.appendChild(h);
-  },
+    styleSheet.sheet.insertRule(
+      `@keyframes animated_entrance {${styles}}`,
+      styleSheet.length
+    );
+    styleSheet.sheet.insertRule(
+      `@keyframes animated_exit {${styleExit}}`,
+      styleSheet.length
+    );
+  }
+  const animation_time = (options.duration / 2 - 500) / 1000;
+  h.style.animation = `animated_entrance ${animation_time}s`;
+  setTimeout(() => {
+    h.style.animation = `animated_exit ${animation_time}s`;
+  }, options.duration);
+  setTimeout(() => {
+    h.style.display = "none";
+  }, options.duration + 1000 * animation_time);
+  container.appendChild(h);}
 };
 module.export = toast;

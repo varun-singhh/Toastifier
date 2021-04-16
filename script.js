@@ -284,12 +284,10 @@ const toast = (options, msg) => {
       });
       if (options.onClickClose) {
         h.addEventListener('mouseleave', () => {
-          setTimeout(() => {
-            h.style.animation = `animated_exit 0.5s`;
-          }, options.duration);
+          h.style.animation = `animated_exit ${animation_time}s`;
           setTimeout(() => {
             h.style.display = 'none';
-          }, options.duration + 1000 * 0.5);
+          }, 800);
         });
       }
     }

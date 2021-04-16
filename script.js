@@ -4,6 +4,7 @@ const toast = (options, msg) => {
     var check = document.getElementById("listOfToasts");
     if (check) {
       container = check;
+      console.log(options);
     } else {
       container = document.createElement("div");
       container.classList.add("container");
@@ -28,7 +29,7 @@ const toast = (options, msg) => {
       }
     };
 
-    icon.innerHTML = `${svg(options.type)}`;
+    icon.innerHTML = `${svg(options.type || 'success')}`;
     message.innerText = `${msg}`;
     h.appendChild(icon);
     h.appendChild(message);
@@ -43,11 +44,18 @@ const toast = (options, msg) => {
     if (options.type) {
       h.classList.add(options.type);
     }
+    else {
+      h.classList.add('success');
+    }
     if (options.shadow) {
       h.classList.add("shadow");
     }
     if (options.position) {
       container.classList.add(options.position);
+    }
+    else {
+      container.classList.add('top-center');
+      
     }
     if (options.onClick) {
       h.addEventListener("click", () => {
@@ -104,7 +112,7 @@ const toast = (options, msg) => {
           `;
     }
 
-    if (options.animation === "fade") {
+    else if (options.animation === "fade") {
       styles = `
         0% {
             opacity: 0;
@@ -123,7 +131,7 @@ const toast = (options, msg) => {
           `;
     }
 
-    if (options.animation === "zoom") {
+    else if (options.animation === "zoom") {
       styles = `
         0% {
             opacity: 0;
@@ -149,7 +157,7 @@ const toast = (options, msg) => {
           `;
     }
 
-    if (options.animation === "flip") {
+    else if (options.animation === "flip") {
       styles = `
       0% {
         -webkit-transform: perspective(400px) rotateX(90deg);
@@ -196,7 +204,64 @@ const toast = (options, msg) => {
           `;
     }
 
-    if (options.animation === "bounce") {
+    else if (options.animation === "bounce") {
+      styles = `
+      %,
+      20%,
+      40%,
+      60%,
+      80%,
+      to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+      0% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+      }
+      20% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+      }
+      40% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9);
+        transform: scale3d(0.9, 0.9, 0.9);
+      }
+      60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03);
+      }
+      80% {
+        -webkit-transform: scale3d(0.97, 0.97, 0.97);
+        transform: scale3d(0.97, 0.97, 0.97);
+      }
+      to {
+        opacity: 1;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+      }
+        `;
+      styleExit = `
+      20% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9);
+        transform: scale3d(0.9, 0.9, 0.9);
+      }
+      50%,
+      55% {
+        opacity: 1;
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+      }
+      to {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+      }
+          `;
+    }
+    else {
       styles = `
       %,
       20%,
@@ -288,14 +353,14 @@ const toast = (options, msg) => {
         styleSheet.length
       );
     }
-    const animation_time = (options.duration / 2 - 500) / 1000;
+    const animation_time = ((options.duration / 2 - 500) / 1000) || 1;
     h.style.animation = `animated_entrance ${animation_time}s`;
     time1 = setTimeout(() => {
       h.style.animation = `animated_exit ${animation_time}s`;
-    }, options.duration);
+    }, options.duration || 3000);
     time2 = setTimeout(() => {
       h.style.display = "none";
-    }, options.duration + 1000 * animation_time);
+    }, (options.duration + 1000 * animation_time) || 4000);
     if (options.onhoverPause) {
       h.addEventListener("mouseover", () => {
         clearTimeout(time1);

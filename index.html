@@ -21,10 +21,11 @@
     var butt = document.getElementById('butt')
     butt.style.textAlign = 'right'
     let options = {
-        type: 'error',
-        shadow: false,
-        animation: 'flip',
-        duration: 3000
+        type: 'success',
+        shadow: true,
+        animation: 'zoom',
+        duration: 3000,
+        
     }
     butt.addEventListener('click', () => {
         toast(options, 'kaustubh is mc')

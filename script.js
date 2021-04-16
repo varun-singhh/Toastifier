@@ -1,33 +1,47 @@
 const toast = (options, msg) => {
-if(typeof window)
-  {var container
-  var check = document.getElementById('listOfToasts')
-  if (check) {
-    container = check
-  }
-  else {
-    container = document.createElement("div");
-    container.classList.add("container");
-    container.id = "listOfToasts" 
-    document.body.append(container)
-  }
-  var h = document.createElement("div");
-  h.innerText = msg;
-  h.classList.add("alert");
-  if (options.type === "success") {
-    h.classList.add("success");
-  } else if (options.type === "warn") {
-    h.classList.add("warn");
-  } else if (options.type === "error") {
-    h.classList.add("error");
-  }
-  if (options.shadow) {
-    h.classList.add("shadow");
-  }
+  if (typeof window) {
+    var container;
+    var check = document.getElementById("listOfToasts");
+    if (check) {
+      container = check;
+    } else {
+      container = document.createElement("div");
+      container.classList.add("container");
+      container.id = "listOfToasts";
+      document.body.append(container);
+    }
+    var h = document.createElement("div");
+    h.innerText = msg;
 
-  let styles, styleExit;
-  if (options.animation === "slide") {
-    styles = `
+    h.classList.add("alert");
+    if (options.type === "success") {
+      h.classList.add("success");
+      var icon = document.createElement("img");
+      icon.setAttribute("src", "tick.png");
+      icon.style.height = "25px";
+      icon.style.width = "25px";
+      h.appendChild(icon);
+      h.style.display = "flex";
+      h.style.justifyContent = "space-around";
+    } else if (options.type === "warn") {
+      h.classList.add("warn");
+    } else if (options.type === "error") {
+      h.classList.add("error");
+      var icon = document.createElement("img");
+      icon.setAttribute("src", "close.png");
+      icon.style.height = "25px";
+      icon.style.width = "25px";
+      h.appendChild(icon);
+      h.style.display = "flex";
+      h.style.justifyContent = "space-around";
+    }
+    if (options.shadow) {
+      h.classList.add("shadow");
+    }
+
+    let styles, styleExit;
+    if (options.animation === "slide") {
+      styles = `
         0% {
             -webkit-transform: translateX(-1000px) scale(0.7);
             transform: translateX(-1000px) scale(0.7);
@@ -44,7 +58,7 @@ if(typeof window)
             opacity: 1;
           }
         `;
-    styleExit = `
+      styleExit = `
         0% {
             -webkit-transform: scale(1);
             transform: scale(1);
@@ -61,10 +75,10 @@ if(typeof window)
             opacity: 0.7;
           }
           `;
-  }
+    }
 
-  if (options.animation === "fade") {
-    styles = `
+    if (options.animation === "fade") {
+      styles = `
         0% {
             opacity: 0;
         }
@@ -72,7 +86,7 @@ if(typeof window)
             opacity: 1;
         }
         `;
-    styleExit = `
+      styleExit = `
         0% {
             opacity: 1;
         }
@@ -80,10 +94,10 @@ if(typeof window)
             opacity: 0;
         }
           `;
-  }
+    }
 
-  if (options.animation === "zoom") {
-    styles = `
+    if (options.animation === "zoom") {
+      styles = `
         0% {
             opacity: 0;
             -webkit-transform: scale3d(0.3, 0.3, 0.3);
@@ -93,7 +107,7 @@ if(typeof window)
             opacity: 1;
         }
         `;
-    styleExit = `
+      styleExit = `
       0% {
         opacity: 1;
       }
@@ -106,10 +120,10 @@ if(typeof window)
         opacity: 0;
       }
           `;
-  }
+    }
 
-  if (options.animation === "flip") {
-    styles = `
+    if (options.animation === "flip") {
+      styles = `
       0% {
         -webkit-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
@@ -137,7 +151,7 @@ if(typeof window)
         transform: perspective(400px);
       }
         `;
-    styleExit = `
+      styleExit = `
       0% {
         -webkit-transform: perspective(400px);
         transform: perspective(400px);
@@ -153,10 +167,10 @@ if(typeof window)
         opacity: 0;
       }
           `;
-  }
+    }
 
-  if (options.animation === "bounce") {
-    styles = `
+    if (options.animation === "bounce") {
+      styles = `
       %,
       20%,
       40%,
@@ -194,7 +208,7 @@ if(typeof window)
         transform: scaleX(1);
       }
         `;
-    styleExit = `
+      styleExit = `
       20% {
         -webkit-transform: scale3d(0.9, 0.9, 0.9);
         transform: scale3d(0.9, 0.9, 0.9);
@@ -211,33 +225,34 @@ if(typeof window)
         transform: scale3d(0.3, 0.3, 0.3);
       }
           `;
-  }
+    }
 
-  let styleSheet = null;
-  // Creating a style element
-  // To add the keyframes
-  if (!styleSheet) {
-    styleSheet = document.createElement("style");
-    styleSheet.type = "text/css";
-    document.head.appendChild(styleSheet);
+    let styleSheet = null;
+    // Creating a style element
+    // To add the keyframes
+    if (!styleSheet) {
+      styleSheet = document.createElement("style");
+      styleSheet.type = "text/css";
+      document.head.appendChild(styleSheet);
 
-    styleSheet.sheet.insertRule(
-      `@keyframes animated_entrance {${styles}}`,
-      styleSheet.length
-    );
-    styleSheet.sheet.insertRule(
-      `@keyframes animated_exit {${styleExit}}`,
-      styleSheet.length
-    );
+      styleSheet.sheet.insertRule(
+        `@keyframes animated_entrance {${styles}}`,
+        styleSheet.length
+      );
+      styleSheet.sheet.insertRule(
+        `@keyframes animated_exit {${styleExit}}`,
+        styleSheet.length
+      );
+    }
+    const animation_time = (options.duration / 2 - 500) / 1000;
+    h.style.animation = `animated_entrance ${animation_time}s`;
+    setTimeout(() => {
+      h.style.animation = `animated_exit ${animation_time}s`;
+    }, options.duration);
+    setTimeout(() => {
+      h.style.display = "none";
+    }, options.duration + 1000 * animation_time);
+    container.appendChild(h);
   }
-  const animation_time = (options.duration / 2 - 500) / 1000;
-  h.style.animation = `animated_entrance ${animation_time}s`;
-  setTimeout(() => {
-    h.style.animation = `animated_exit ${animation_time}s`;
-  }, options.duration);
-  setTimeout(() => {
-    h.style.display = "none";
-  }, options.duration + 1000 * animation_time);
-  container.appendChild(h);}
 };
 module.export = toast;

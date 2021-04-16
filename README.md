@@ -10,13 +10,13 @@ $ yarn add toastify
 ## The gist
 
 ```jsx
-import React from "react";
+import React from 'react';
 
-import { toast } from "toastifier";
-import "toastifier/dist/toastifier.min.css";
+import { toast } from 'toastifier';
+import 'toastifier/dist/toastifier.min.css';
 
 function App() {
-  const notify = () => toast("Boom! it Worked");
+  const notify = () => toast('Boom! it Worked');
 
   return (
     <div>
@@ -41,6 +41,7 @@ Check this to get you started!
 | `duration`     | `Number`       | **Required.** Duration for Animation .     |
 | `position`     | `String`       | Toast position on window.                  |
 | `onhoverPause` | `Boolean`      | pasue toast on hover.                      |
+| `showIcons`    | `boolean`      | Show default SVG icons on toast            |
 | `onClick`      | `Function`     | Function to trriger events.                |
 | `styleClass`   | `Class Object` | Object for Style Class.                    |
 | `background`   | `String`       | Background colour, by default white        |
@@ -55,32 +56,33 @@ Check these values for each attributes!
 | `animation`    | `flip, bounce, fade, zoom`                                                   |
 | `position`     | `top-left, top-center, top-right, bottom-left, bottom-center, bottom-right,` |
 | `onhoverPause` | `true/false`                                                                 |
+| `showIcons`    | `true/false`                                                                 |
 
 ```jsx
-import React from "react";
+import React from 'react';
 
-import { toast } from "toastifier";
-import "toastifier/dist/toastifier.min.css";
+import { toast } from 'toastifier';
+import 'toastifier/dist/toastifier.min.css';
 
 function App() {
   const toastfunction = () => {
-    alert("function Trigerred");
+    alert('function Trigerred');
   };
   const oprions = {
-    type: "success",
+    type: 'success',
     shadow: false,
-    animation: "bounce",
+    animation: 'bounce',
     duration: 3000,
-    position: "top-center",
+    position: 'top-center',
     onhoverPause: true,
     onClick: toastfunction,
     styleClass: {
-      background: "", // leave blank or remove styleClass to use default style
-      text: "",
-      border: "",
+      background: '', // leave blank or remove styleClass to use default style
+      text: '',
+      border: '',
     },
   };
-  const notify = () => toast(options, "Boom! it Worked");
+  const notify = () => toast(options, 'Boom! it Worked');
 
   return (
     <div>

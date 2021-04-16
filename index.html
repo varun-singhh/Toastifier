@@ -69,12 +69,15 @@
       // duration: 3000,
       // position: 'top-right',
       onhoverPause: true,
-      // onClick: func,
-      // styleClass: {
-      //   background: '',
-      //   text: '',
-      //   border: '',
-      // },
+      onClickClose: true,
+      showIcons:true,
+      onClick: func,
+      styleClass: {
+        background: '',
+        text: '',
+        border: '',
+      },
+
     };
     butt.addEventListener('click', () => {
       toast(options, 'Alert Check');

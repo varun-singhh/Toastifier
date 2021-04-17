@@ -1,26 +1,22 @@
-# React-Toast-It
-
 ## Installation
 
 ```
 $ npm install --save toastifier
-$ yarn add toastify
+$ yarn add toastifier
 ```
 
-## The gist
+## Simple Example
 
 ```jsx
 import React from 'react';
 
-import { toast } from 'toastifier';
+import toastifier from 'toastifier';
 import 'toastifier/dist/toastifier.min.css';
 
 function App() {
-  const notify = () => toast('Boom! it Worked');
-
   return (
     <div>
-      <button onClick={notify}>Notify!</button>
+      <button onClick={() => toastifier('Alert Check')}>Notify!</button>
     </div>
   );
 }
@@ -28,47 +24,54 @@ function App() {
 
 ## Demo
 
-<img src="https://imgur.com/ThbikEk.gif" alt="Image"/>
+<img src="https://imgur.com/ThbikEk.gif" alt="Image"/>    
+<br /><br /><br />
 
-## Documentation
+  ## Documentation
 
 Check this to get you started!
 
 | Name           | Type           | Description                                |
 | -------------- | -------------- | ------------------------------------------ |
-| `type`         | `String`       | **Required.** Toast Type                   |
-| `animation`    | `String`       | **Required.** Animation Category           |
-| `duration`     | `Number`       | **Required.** Duration for Animation .     |
+| `type`         | `String`       | Toast Type                   |
+| `animation`    | `String`       | Animation Category           |
+| `duration`     | `Number`       | Duration for Animation .     |
 | `position`     | `String`       | Toast position on window.                  |
 | `onhoverPause` | `Boolean`      | pasue toast on hover.                      |
-| `showIcons`    | `boolean`      | Show default SVG icons on toast            |
+| `showIcon`    | `boolean`      | Show default SVG icons on toast            |
 | `onClick`      | `Function`     | Function to trriger events.                |
 | `styleClass`   | `Class Object` | Object for Style Class.                    |
 | `background`   | `String`       | Background colour, by default white        |
 | `text`         | `String`       | Text Color, by default based on toast type |
 | `border`       | `String`       | Border, by default based on toast type     |
+    
+<br />
 
-Check these values for each attributes!
+## Available options
 
-| Name           | Values                                                                       |
-| -------------- | ---------------------------------------------------------------------------- |
-| `type`         | `error, success, warn, info`                                                 |
-| `animation`    | `flip, bounce, fade, zoom`                                                   |
-| `position`     | `top-left, top-center, top-right, bottom-left, bottom-center, bottom-right,` |
-| `onhoverPause` | `true/false`                                                                 |
-| `showIcons`    | `true/false`                                                                 |
+| Name           | Values                                                                       | Default    |
+| -------------- | ---------------------------------------------------------------------------- | ---------- |
+| `type`         | `error, success, warn, info`                                                 |`success`   |
+| `animation`    | `flip, bounce, fade, zoom`                                                   |`bounce`    |
+| `position`     | `top-left, top-center, top-right, bottom-left, bottom-center, bottom-right,` |`top-center`|
+| `onhoverPause` | `true/false`                                                                 |`false`     |
+| `showIcon`    | `true/false`                                                                  |`false`     |
+
+<br />
+
+## Complete Example
 
 ```jsx
 import React from 'react';
 
-import { toast } from 'toastifier';
+import toastifier from 'toastifier';
 import 'toastifier/dist/toastifier.min.css';
 
 function App() {
   const toastfunction = () => {
     alert('function Trigerred');
   };
-  const oprions = {
+  const options = {
     type: 'success',
     shadow: false,
     animation: 'bounce',
@@ -77,12 +80,12 @@ function App() {
     onhoverPause: true,
     onClick: toastfunction,
     styleClass: {
-      background: '', // leave blank or remove styleClass to use default style
-      text: '',
-      border: '',
+      background: '#22272e', // dark mode
+      text: '#fff',
+      border: '#eee',
     },
   };
-  const notify = () => toast(options, 'Boom! it Worked');
+  const notify = () => toastifier('Boom! it Worked', options);
 
   return (
     <div>
@@ -96,6 +99,6 @@ function App() {
 
 Show your ❤️ and support by giving a ⭐. Any suggestions are welcome!
 
-### Code Contributors
+## Code Contributors
 
 This project exists thanks to all the people who contribute.

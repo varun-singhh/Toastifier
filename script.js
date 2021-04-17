@@ -1,4 +1,4 @@
-const toast = (options, msg) => {
+function toast(options, msg) {
   if (typeof window) {
     var container;
     var check = document.getElementById('listOfToasts');
@@ -293,5 +293,5 @@ const toast = (options, msg) => {
     }
     container.appendChild(h);
   }
-};
-module.export = toast;
+}
+module.exports.toast = toast;

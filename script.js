@@ -347,7 +347,7 @@ function toastifier (msg, options = {}) {
               clearTimeout(time1)
               clearTimeout(time2)
             });
-            if (options.onClickClose) {
+            if (options.onhoverPause) {
               h.addEventListener('mouseleave', () => {
                 h.style.animation = `animated_exit ${animation_time}s`;
                 setTimeout(() => {

@@ -1,5 +1,3 @@
-# React-Toast-It
-
 ## Installation
 
 ```

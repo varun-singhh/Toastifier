@@ -2,7 +2,7 @@
 
 ```
 $ npm install --save toastifier
-$ yarn add toastify
+$ yarn add toastifier
 ```
 
 ## Simple Example

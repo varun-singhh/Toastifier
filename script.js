@@ -4,7 +4,6 @@ function toastifier (msg, options = {}) {
         var check = document.getElementById("listOfToasts");
         if (check) {
           container = check;
-          // console.log(options);
         } else {
           container = document.createElement("div");
           container.classList.add("toastifier__container");
@@ -39,12 +38,6 @@ function toastifier (msg, options = {}) {
         h.appendChild(icon);
         h.appendChild(message);
         icon.style.marginRight = "5px";
-        // icon.style.marginBottom = "-5px";
-        // h.style.display = 'flex';
-        // h.style.justifyContent = 'center';
-        // h.style.alignItems = 'center';
-    
-        // h.innerHTML = `${msg}`;
         h.classList.add("toastifier__alert");
         if (options.type) {
           h.classList.add(`toastifier__${options.type}`);

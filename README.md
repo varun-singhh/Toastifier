@@ -27,35 +27,35 @@ function App() {
 <img src="https://imgur.com/ThbikEk.gif" alt="Image"/>    
 <br /><br /><br />
 
-## Documentation
+  ## Documentation
 
 Check this to get you started!
 
 | Name           | Type           | Description                                |
 | -------------- | -------------- | ------------------------------------------ |
-| `type`         | `String`       | Toast Type                                 |
-| `animation`    | `String`       | Animation Category                         |
-| `duration`     | `Number`       | Duration for Animation .                   |
+| `type`         | `String`       | Toast Type                   |
+| `animation`    | `String`       | Animation Category           |
+| `duration`     | `Number`       | Duration for Animation .     |
 | `position`     | `String`       | Toast position on window.                  |
 | `onhoverPause` | `Boolean`      | pasue toast on hover.                      |
-| `showIcon`     | `String`       | Show default SVG icons on toast            |
+| `showIcon`    | `Boolean`      | Show default SVG icons on toast            |
 | `onClick`      | `Function`     | Function to trriger events.                |
 | `styleClass`   | `Class Object` | Object for Style Class.                    |
 | `background`   | `String`       | Background colour, by default white        |
 | `text`         | `String`       | Text Color, by default based on toast type |
 | `border`       | `String`       | Border, by default based on toast type     |
-
+    
 <br />
 
 ## Available options
 
-| Name           | Values                                                                       | Default      |
-| -------------- | ---------------------------------------------------------------------------- | ------------ |
-| `type`         | `error, success, warn, info`                                                 | `success`    |
-| `animation`    | `flip, bounce, fade, zoom`                                                   | `bounce`     |
-| `position`     | `top-left, top-center, top-right, bottom-left, bottom-center, bottom-right,` | `top-center` |
-| `onhoverPause` | `true/false`                                                                 | `false`      |
-| `showIcon`     | `true/false`                                                                 | `false`      |
+| Name           | Values                                                                       | Default    |
+| -------------- | ---------------------------------------------------------------------------- | ---------- |
+| `type`         | `error, success, warn, info`                                                 |`success`   |
+| `animation`    | `flip, bounce, fade, zoom`                                                   |`bounce`    |
+| `position`     | `top-left, top-center, top-right, bottom-left, bottom-center, bottom-right,` |`top-center`|
+| `onhoverPause` | `true/false`                                                                 |`false`     |
+| `showIcon`    | `true/false`                                                                  |`false`     |
 
 <br />
 
@@ -78,7 +78,6 @@ function App() {
     duration: 3000,
     position: 'top-center',
     onhoverPause: true,
-    shoeIcon:'true',
     onClick: toastfunction,
     styleClass: {
       background: '#22272e', // dark mode

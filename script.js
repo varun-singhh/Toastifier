@@ -4,7 +4,7 @@ function toastifier (msg, options = {}) {
         var check = document.getElementById("listOfToasts");
         if (check) {
           container = check;
-          console.log(options);
+          // console.log(options);
         } else {
           container = document.createElement("div");
           container.classList.add("toastifier__container");
@@ -28,7 +28,10 @@ function toastifier (msg, options = {}) {
             return '<svg width="20" height="20" viewBox="0 0 494 443" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M199.181 27.4959C220.351 -9.16532 273.268 -9.16529 294.439 27.4959L486.166 359.512C507.34 396.179 480.879 442.016 438.538 442.016H55.082C12.7409 442.016 -13.7207 396.179 7.4531 359.512L199.181 27.4959ZM219.81 113.016C219.81 109.703 222.496 107.016 225.81 107.016H267.81C271.124 107.016 273.81 109.703 273.81 113.016V279.016C273.81 282.33 271.124 285.016 267.81 285.016H225.81C222.496 285.016 219.81 282.33 219.81 279.016V113.016ZM247.31 312.016C232.122 312.016 219.81 324.329 219.81 339.516C219.81 354.704 232.122 367.016 247.31 367.016C262.498 367.016 274.81 354.704 274.81 339.516C274.81 324.329 262.498 312.016 247.31 312.016Z" fill="url(#paint0_linear)"/><defs><linearGradient id="paint0_linear" x1="246.81" y1="0" x2="246.81" y2="442.016" gradientUnits="userSpaceOnUse"><stop stop-color="#FCE300"/><stop offset="1" stop-color="#D09600"/></linearGradient></defs></svg>';
           }
         };
-        if (options.showIcon) {
+        if (options.showIcon==="false") {
+          icon.style.display="none";
+        }
+        else{
           icon.innerHTML = `${svg(options.type || 'success')}`;
         }
     

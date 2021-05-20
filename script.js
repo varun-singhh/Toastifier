@@ -337,6 +337,9 @@ function toastifier (msg, options = {}) {
     }, options.duration || 3000);
     const time2 = setTimeout(() => {
       h.remove()
+      if(document.getElementsByClassName('toastifier__alert').length === 0 ){
+        container.remove()
+      }
     }, (options.duration + 1000 * animation_time) || 4000);
     if (options.onhoverPause) {
         h.addEventListener('mouseover', () => {

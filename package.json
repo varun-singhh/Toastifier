@@ -1,6 +1,6 @@
 {
   "name": "toastifier",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Light and Simple Multi-Framework Toaster",
   "main": "script.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/varun-singhh/React-Toast-It.git"
+    "url": "git+https://github.com/varun-singhh/Toastifier.git"
   },
   "keywords": [
     "Toaster",
@@ -22,7 +22,7 @@
   "author": "Kaustubhai, varun-singhh, prakhar134",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/varun-singhh/React-Toast-It/issues"
+    "url": "https://github.com/varun-singhh/Toastifier/issues"
   },
-  "homepage": "https://github.com/varun-singhh/React-Toast-It#readme"
+  "homepage": "https://github.com/varun-singhh/Toastifier#readme"
 }

@@ -38,7 +38,7 @@ Check this to get you started!
 | `duration`     | `Number`       | Duration for Animation .     |
 | `position`     | `String`       | Toast position on window.                  |
 | `onhoverPause` | `Boolean`      | pasue toast on hover.                      |
-| `showIcon`    | `boolean`      | Show default SVG icons on toast            |
+| `showIcon`    | `Boolean`      | Show default SVG icons on toast            |
 | `onClick`      | `Function`     | Function to trriger events.                |
 | `styleClass`   | `Class Object` | Object for Style Class.                    |
 | `background`   | `String`       | Background colour, by default white        |

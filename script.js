@@ -1,58 +1,58 @@
 function toastifier(msg, options = {}) {
   if (typeof window) {
     var container;
-    var check = document.getElementById('listOfToasts');
+    var check = document.getElementById("listOfToasts");
     if (check) {
       container = check;
     } else {
-      container = document.createElement('div');
-      container.classList.add('toastifier__container');
-      container.id = 'listOfToasts';
+      container = document.createElement("div");
+      container.classList.add("toastifier__container");
+      container.id = "listOfToasts";
       document.body.append(container);
     }
-    var h = document.createElement('div');
-    var icon = document.createElement('div');
-    var message = document.createElement('div');
+    var h = document.createElement("div");
+    var icon = document.createElement("div");
+    var message = document.createElement("div");
     const svg = (val) => {
-      if (val === 'error') {
-        return `<img src="https://raw.githubusercontent.com/varun-singhh/Toastifier/main/images/toastifier_error.webp" height="15px" width="15px"/>`;
+      if (val === "error") {
+        return `<img src="https://raw.githubusercontent.com/varun-singhh/Toastifier/main/images/toastifier_error.png" height="18px" width="18px"/>`;
       }
-      if (val === 'success') {
-        return `<img src="https://raw.githubusercontent.com/varun-singhh/Toastifier/main/images/toastifier_success.webp" height="15px" width="15px"/>`;
+      if (val === "success") {
+        return `<img src="https://raw.githubusercontent.com/varun-singhh/Toastifier/main/images/toastifier_success.png" height="18px" width="18px"/>`;
       }
-      if (val === 'info') {
-        return `<img src="https://raw.githubusercontent.com/varun-singhh/Toastifier/main/images/toastifier_info.webp" height="15px" width="15px"/>`;
+      if (val === "info") {
+        return `<img src="https://raw.githubusercontent.com/varun-singhh/Toastifier/main/images/toastifier_info.png" height="18px" width="18px"/>`;
       }
-      if (val === 'warn') {
-        return `<img src="https://raw.githubusercontent.com/varun-singhh/Toastifier/main/images/toastifier_warn.webp" height="15px" width="15px"/>`;
+      if (val === "warn") {
+        return `<img src="https://raw.githubusercontent.com/varun-singhh/Toastifier/main/images/toastifier_warn.png" height="18px" width="18px"/>`;
       }
     };
     if (options.showIcon === false) {
-      icon.style.display = 'none';
+      icon.style.display = "none";
     } else {
-      icon.innerHTML = `${svg(options.type || 'success')}`;
+      icon.innerHTML = `${svg(options.type || "success")}`;
     }
 
     message.innerText = `${msg}`;
     h.appendChild(icon);
     h.appendChild(message);
-    icon.style.marginRight = '5px';
-    h.classList.add('toastifier__alert');
+    icon.style.marginRight = "5px";
+    h.classList.add("toastifier__alert");
     if (options.type) {
       h.classList.add(`toastifier__${options.type}`);
     } else {
-      h.classList.add('toastifier__success');
+      h.classList.add("toastifier__success");
     }
     if (options.shadow) {
-      h.classList.add('toastifier__shadow');
+      h.classList.add("toastifier__shadow");
     }
     if (options.position) {
       container.classList.add(`toastifier__${options.position}`);
     } else {
-      container.classList.add('toastifier__top-center');
+      container.classList.add("toastifier__top-center");
     }
     if (options.onClick) {
-      h.addEventListener('click', () => {
+      h.addEventListener("click", () => {
         options.onClick();
       });
     }
@@ -69,7 +69,7 @@ function toastifier(msg, options = {}) {
     }
 
     let styles, styleExit;
-    if (options.animation === 'slide') {
+    if (options.animation === "slide") {
       styles = `
         0% {
             -webkit-transform: translateX(-1000px) scale(0.7);
@@ -104,7 +104,7 @@ function toastifier(msg, options = {}) {
             opacity: 0.7;
           }
           `;
-    } else if (options.animation === 'fade') {
+    } else if (options.animation === "fade") {
       styles = `
         0% {
             opacity: 0;
@@ -121,7 +121,7 @@ function toastifier(msg, options = {}) {
             opacity: 0;
         }
           `;
-    } else if (options.animation === 'zoom') {
+    } else if (options.animation === "zoom") {
       styles = `
         0% {
             opacity: 0;
@@ -145,7 +145,7 @@ function toastifier(msg, options = {}) {
         opacity: 0;
       }
           `;
-    } else if (options.animation === 'flip') {
+    } else if (options.animation === "flip") {
       styles = `
       0% {
         -webkit-transform: perspective(400px) rotateX(90deg);
@@ -190,7 +190,7 @@ function toastifier(msg, options = {}) {
         opacity: 0;
       }
           `;
-    } else if (options.animation === 'bounce') {
+    } else if (options.animation === "bounce") {
       styles = `
       %,
       20%,
@@ -305,8 +305,8 @@ function toastifier(msg, options = {}) {
     }
     let styleSheet = null;
     if (!styleSheet) {
-      styleSheet = document.createElement('style');
-      styleSheet.type = 'text/css';
+      styleSheet = document.createElement("style");
+      styleSheet.type = "text/css";
       document.head.appendChild(styleSheet);
 
       styleSheet.sheet.insertRule(
@@ -325,21 +325,20 @@ function toastifier(msg, options = {}) {
     }, options.duration || 3000);
     const time2 = setTimeout(() => {
       h.remove();
-      if (document.getElementsByClassName('toastifier__alert').length === 0) {
+      if (document.getElementsByClassName("toastifier__alert").length === 0) {
         container.remove();
       }
     }, options.duration + 1000 * animation_time || 4000);
     if (options.onhoverPause) {
-      h.addEventListener('mouseover', () => {
+      h.addEventListener("mouseover", () => {
         clearTimeout(time1);
         clearTimeout(time2);
       });
       if (options.onhoverPause) {
-        h.addEventListener('mouseleave', () => {
+        h.addEventListener("mouseleave", () => {
           h.style.animation = `animated_exit ${animation_time}s`;
           setTimeout(() => {
-            h.style.display = 'none';
-            container.remove();
+            h.style.display = "none";
           }, 800);
         });
       }

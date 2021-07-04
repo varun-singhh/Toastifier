@@ -336,10 +336,15 @@ function toastifier(msg, options = {}) {
       });
       if (options.onhoverPause) {
         h.addEventListener("mouseleave", () => {
-          h.style.animation = `animated_exit ${animation_time}s`;
           setTimeout(() => {
-            h.style.display = "none";
-          }, 800);
+            h.style.animation = `animated_exit ${animation_time}s`;
+          }, 500);
+          setTimeout(() => {
+            h.remove();
+            if (document.getElementsByClassName("toastifier__alert").length === 0) {
+              container.remove();
+            }
+          }, 1500);
         });
       }
     }

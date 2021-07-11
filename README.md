@@ -24,8 +24,9 @@ function App() {
 
 ## Demo
 
-### You can play with our official Demo [here](https://toastifier.vercel.app/)
+## You can play with our official Demo [here](https://toastifier.vercel.app/)
 
+<br />
 <img src="https://imgur.com/yDNHws5.gif" alt="Image"/>    
 <br /><br /><br />
 

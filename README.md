@@ -26,7 +26,7 @@ function App() {
 
 ### You can play with our official Demo [here](https://toastifier.vercel.app/)
 
-<img src="https://imgur.com/ThbikEk.gif" alt="Image"/>    
+<img src="https://imgur.com/yDNHws5.gif" alt="Image"/>    
 <br /><br /><br />
 
 ## Documentation

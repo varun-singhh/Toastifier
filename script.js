@@ -322,6 +322,7 @@ function toastifier(msg, options = {}) {
     h.style.animation = `animated_entrance ${animation_time}s`;
     const time1 = setTimeout(() => {
       h.style.animation = `animated_exit ${animation_time}s`;
+      options.onDisappear && options.onDisappear()
     }, options.duration || 3000);
     const time2 = setTimeout(() => {
       h.remove();
@@ -337,8 +338,9 @@ function toastifier(msg, options = {}) {
       if (options.onhoverPause) {
         h.addEventListener("mouseleave", () => {
           setTimeout(() => {
-            h.style.animation = `animated_exit ${animation_time}s`;
-          }, 500);
+              h.style.animation = `animated_exit ${animation_time}s`;
+              options.onDisappear && options.onDisappear()
+            }, 500);
           setTimeout(() => {
             h.remove();
             if (document.getElementsByClassName("toastifier__alert").length === 0) {
@@ -349,6 +351,7 @@ function toastifier(msg, options = {}) {
       }
     }
     container.appendChild(h);
+    options.onAppear && options.onAppear()
   }
 }
 module.exports = toastifier;

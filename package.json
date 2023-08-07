@@ -1,6 +1,6 @@
 {
   "name": "toastifier",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "Light and Simple Multi-Framework Toaster",
   "main": "script.js",
   "scripts": {
@@ -24,5 +24,5 @@
   "bugs": {
     "url": "https://github.com/varun-singhh/Toastifier/issues"
   },
-  "homepage": "https://github.com/varun-singhh/Toastifier#readme"
+  "homepage": "https://toastifier.vercel.app/"
 }

@@ -47,6 +47,8 @@ Check this to get you started!
 | `background`   | `String`       | Background colour, by default white        |
 | `text`         | `String`       | Text Color, by default based on toast type |
 | `border`       | `String`       | Border, by default based on toast type     |
+| `onAppear`     | `Function`     | Callback executes when toast appears       |
+| `onDisappear`  | `Function`     | Callback executes when toast disappears    |
 
 <br />
 
@@ -87,6 +89,8 @@ function App() {
       text: "#fff",
       border: "#eee",
     },
+    onAppear: () => console.log('toast appeared'),
+    onDisappear: () => console.log('toast disappeared')
   };
   const notify = () => toastifier("Boom! it Worked", options);
 
